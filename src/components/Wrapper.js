@@ -1,3 +1,4 @@
+import DiceColumn from "./DiceColumn"
 import PlayerPanel from "./PlayerPanel"
 
 export default function Wrapper() {
@@ -9,6 +10,7 @@ export default function Wrapper() {
             <PlayerPanel 
                 playerNumber = '2'
             />
+            <DiceColumn />
         </div>
     )
 }

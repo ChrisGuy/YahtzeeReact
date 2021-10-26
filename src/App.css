@@ -23,10 +23,40 @@ li {
 #Wrapper {
   width: 1000px;
   height: 600px;
+  position: relative;
   background-color: #f8f8f8;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 30px;
+}
+
+.DiceColumn {
+  width: 100px;
+  height: 450px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.Dice {
+  width: 70px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+img.Dice.active{
+  border: 3px solid #ffbaba;
+}
+
+.Dice:hover {
+  box-shadow: none;
+  cursor: pointer;
+  border: 3px solid #ffbaba;
 }
 
 .PlayerPanel {
