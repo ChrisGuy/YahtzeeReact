@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -72,11 +74,22 @@ img.Dice.active{
   grid-template-rows: 2fr 1fr;
 }
 
-.PlayerInfo h2 {
+.PlayerName {
+  font-family: 'Roboto', sans-serif;
   font-size: 40px;
-  font-weight: 200;
+  font-weight: 100;
   line-height: 20px;
-  margin: 20px;
+  margin-bottom: 10px;
+  background: none;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  text-align: center;
+
+}
+
+.PlayerName:focus-visible {
+  outline: 1px solid #eb4d4d;
 }
 
 .PlayerTurns {
