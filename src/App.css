@@ -1,38 +1,65 @@
-.App {
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+ul {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+li {
+  list-style-type: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.App {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  height: 100vh;
 }
 
-.App-link {
-  color: #61dafb;
+#Wrapper {
+  width: 1000px;
+  height: 600px;
+  background-color: #f8f8f8;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.PlayerPanel {
+  display: grid;
+  grid-template-rows: 1fr 1fr 6fr;
+  padding: 50px;
+}
+
+.PlayerInfo {
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr;
+  grid-template-rows: 2fr 1fr;
+}
+
+.PlayerInfo h2 {
+  font-size: 40px;
+  font-weight: 200;
+  line-height: 20px;
+  margin: 20px;
+}
+
+.PlayerTurns {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+
+.PlayerScore {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 3;
 }
