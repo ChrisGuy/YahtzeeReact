@@ -1,6 +1,6 @@
 import { FaDiceOne, FaDiceTwo, FaDiceThree, FaDiceFour, FaDiceFive, FaDiceSix, FaHome, FaStar } from "react-icons/fa";
 
-export default function ScoreCard() {
+export default function ScoreCard({ scoreCard }) {
     return (
         <div className="ScoreCard">
             <div className="Ones SCIcon">
@@ -84,7 +84,7 @@ export default function ScoreCard() {
             </div>
 
             <div className="OnesScore SCScore">
-                0
+                {scoreCard.ones.score}
             </div>
             <div className="TwosScore SCScore">
                 0

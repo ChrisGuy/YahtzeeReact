@@ -112,6 +112,10 @@ img.Dice.active{
   grid-row-end: 3;
 }
 
+.hidden {
+  visibility: hidden;
+}
+
 .ScoreCard {
   padding: 20px;
   display: grid;

@@ -1,7 +1,7 @@
 const PlayerData = 
     [
     {
-        active: 0,
+        active: 1,
         totalScore: 0,
         turns: 3,
         scorecard: {
@@ -60,7 +60,7 @@ const PlayerData =
         }
     },
     {
-        active: 1,
+        active: 0,
         totalScore: 0,
         turns: 3,
         scorecard: {

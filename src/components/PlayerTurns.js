@@ -19,7 +19,7 @@ export default function PlayerTurns({ turns, active }) {
                     ? ""
                     : turns
                     ? getTurns()  
-                    : "No turns"
+                    : ""
                 }
             </ul>
         </div>

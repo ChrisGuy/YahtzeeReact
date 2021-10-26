@@ -1,20 +1,34 @@
 import PlayerInfo from "./PlayerInfo"
 import ScoreCard from "./ScoreCard"
-import PlayerData from "../PlayerData"
 
-export default function PlayerPanel({ playerNumber }) {
+export default function PlayerPanel({ playerNumber, active, totalScore, scorecard, turns, onRollClick }) {
+
     return (
         <div 
-            className={`PlayerPanel ${PlayerData[playerNumber-1].active ? "active" : ""}`}
+            className={`PlayerPanel ${active ? "active" : ""}`}
             >
             <PlayerInfo
                 playerNumber = {playerNumber}
-                playerScore = {PlayerData[playerNumber-1].totalScore}   
-                turns =  {PlayerData[playerNumber-1].turns} 
-                active = {PlayerData[playerNumber-1].active}
+                playerScore = {totalScore}   
+                turns =  {turns} 
+                active = {active}
             />
-            <button>Roll Dice</button>
-            <ScoreCard />
+            {
+                turns
+                ? <button
+                    className = {!active ? "hidden" : ""}
+                    onClick = {onRollClick}
+                    id={playerNumber - 1}
+                >
+                    Roll Dice
+                </button>
+                : <button disabled>No more turns</button>
+            }
+            
+
+            <ScoreCard 
+                scoreCard = {scorecard}
+            />
         </div>
     )
 }
