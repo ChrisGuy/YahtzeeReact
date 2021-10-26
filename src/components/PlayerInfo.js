@@ -1,7 +1,7 @@
 import PlayerTurns from "./PlayerTurns"
 import { useState } from "react"
 
-export default function PlayerInfo({ playerNumber }) {
+export default function PlayerInfo({ playerNumber, playerScore, turns, active }) {
     const [playerName, setPlayerName] = useState("Insert Name");
     
 
@@ -9,10 +9,12 @@ export default function PlayerInfo({ playerNumber }) {
         setPlayerName(e.target.value);
       }
 
-
     return (
         <div className='PlayerInfo'>
-            <PlayerTurns />
+            <PlayerTurns 
+                turns={turns}
+                active={active}
+            />
             <input 
                 type="text"
                 value={playerName}
@@ -20,7 +22,7 @@ export default function PlayerInfo({ playerNumber }) {
                 className="PlayerName"
                 />
             <p className="PlayerScore">
-                Score: 0
+                Score: {playerScore}
             </p>
         </div>
     )

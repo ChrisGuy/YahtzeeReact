@@ -67,6 +67,10 @@ img.Dice.active{
   padding: 50px;
 }
 
+.PlayerPanel.active {
+  background: #ededed;
+}
+
 .PlayerInfo {
   text-align: center;
   display: grid;
@@ -85,7 +89,6 @@ img.Dice.active{
   border-radius: 5px;
   width: 100%;
   text-align: center;
-
 }
 
 .PlayerName:focus-visible {
@@ -99,6 +102,7 @@ img.Dice.active{
   align-items: center;
   grid-row-start: 1;
   grid-row-end: 3;
+  color: #eb4d4d;
 }
 
 .PlayerScore {

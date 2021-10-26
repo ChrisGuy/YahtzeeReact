@@ -1,6 +1,9 @@
-const PlayerData = [
+const PlayerData = 
+    [
     {
+        active: 0,
         totalScore: 0,
+        turns: 3,
         scorecard: {
             ones: {
                 score: 0,
@@ -57,7 +60,9 @@ const PlayerData = [
         }
     },
     {
+        active: 1,
         totalScore: 0,
+        turns: 3,
         scorecard: {
             ones: {
                 score: 0,
@@ -114,3 +119,5 @@ const PlayerData = [
         }
     }
 ]
+
+export default PlayerData
