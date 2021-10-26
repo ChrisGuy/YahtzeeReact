@@ -26,11 +26,12 @@ li {
   background-color: #f8f8f8;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: 30px;
 }
 
 .PlayerPanel {
   display: grid;
-  grid-template-rows: 1fr 1fr 6fr;
+  grid-template-rows: 1fr 50px 3fr;
   padding: 50px;
 }
 
@@ -62,4 +63,102 @@ li {
   grid-column-end: 3;
   grid-row-start: 2;
   grid-row-end: 3;
+}
+
+.ScoreCard {
+  padding: 20px;
+  display: grid;
+  grid-template-rows: repeat(7, 1fr);
+  grid-template-columns: 1fr 2fr 1fr 1fr 2fr 1fr;
+  grid-template-areas: 
+  "ones onesLabel onesScore threeX threeXLabel threeXScore"
+  "twos twosLabel twosScore fourX fourXLabel fourXScore"
+  "threes threesLabel threesScore fullHouse fullHouseLabel fullHouseScore"
+  "fours foursLabel foursScore smStraight smStraightLabel smStraightScore"
+  "fives fivesLabel fivesScore lgStraight lgStraightLabel lgStraightScore"
+  "sixes sixesLabel sixesScore yahtzee yahtzeeLabel yahtzeeScore"
+  ". . . chance chanceLabel chanceScore";
+}
+
+.Ones {grid-area: ones;}
+.OnesLabel {grid-area: onesLabel;}
+.OnesScore {grid-area: onesScore;}
+
+.Twos {grid-area: twos;}
+.TwosLabel {grid-area: twosLabel;}
+.TwosScore {grid-area: twosScore;}
+
+.Threes {grid-area: threes;}
+.ThreesLabel {grid-area: threesLabel;}
+.ThreesScore {grid-area: threesScore;}
+
+.Fours {grid-area: fours;}
+.FoursLabel {grid-area: foursLabel;}
+.FoursScore {grid-area: foursScore;}
+
+.Fives {grid-area: fives;}
+.FivesLabel {grid-area: fivesLabel;}
+.FivesScore {grid-area: fivesScore;}
+
+.Sixes {grid-area: sixes;}
+.SixesLabel {grid-area: sixesLabel;}
+.SixesScore {grid-area: sixesScore;}
+
+.ThreeX {grid-area: threeX;}
+.ThreeXLabel {grid-area: threeXLabel;}
+.ThreeXScore {grid-area: threeXScore;}
+
+.FourX {grid-area: fourX;}
+.FourXLabel {grid-area: fourXLabel;}
+.FourXScore {grid-area: fourXScore;}
+
+.FullHouse {grid-area: fullHouse;}
+.FullHouseLabel {grid-area: fullHouseLabel;}
+.FullHouseScore {grid-area: fullHouseScore;}
+
+.SmStraight {grid-area: smStraight;}
+.SmStraightLabel {grid-area: smStraightLabel;}
+.SmStraightScore {grid-area: smStraightScore;}
+
+.LgStraight {grid-area: lgStraight;}
+.LgStraightLabel {grid-area: lgStraightLabel;}
+.LgStraightScore {grid-area: lgStraightScore;}
+
+.Yahtzee {grid-area: yahtzee;}
+.YahtzeeLabel {grid-area: yahtzeeLabel;}
+.YahtzeeScore {grid-area: yahtzeeScore;}
+
+.Chance {grid-area: chance;}
+.ChanceLabel {grid-area: chanceLabel;}
+.ChanceScore {grid-area: chanceScore;}
+
+.SCIcon {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 5%;
+}
+
+.SCIcon svg {
+  width: 98%;
+  height: 98%;
+}
+
+.SCLabel {
+  font-size: 12px;
+}
+
+.SCIcon,
+.SCLabel,
+.SCScore {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.SCLabel,
+.SCScore {
+background-color: #ffffff;
+border-radius: 5%;
+border: 1px solid rgba(0, 0, 0, 0.1);
 }
