@@ -1,6 +1,7 @@
 import DiceColumn from "./DiceColumn"
 import PlayerPanel from "./PlayerPanel"
 import PlayerData from "../PlayerData"
+import DiceData from "../DiceData"
 
 import { useState } from "react"
 
@@ -8,15 +9,26 @@ export default function Wrapper() {
 
     const [playerData, setPlayerData] = useState(PlayerData)
 
+    const [dice, setDice] = useState(DiceData)
+
     const handleRollClick = (e) => {
         e.preventDefault();
         const tempTurns = playerData[e.target.id].turns
-        console.log(playerData[e.target.id].turns);
         setPlayerData([
             ...playerData,
             playerData[e.target.id].turns = tempTurns - 1 ]
         )
     }
+
+    const handleDiceClick = (e) => {
+        const tempActive = dice[e.target.id].active
+        setDice([
+            ...dice,
+            dice[e.target.id].active = !tempActive
+        ])
+    }
+
+    console.log(dice);
 
     return (
         <div id="Wrapper">
@@ -36,7 +48,10 @@ export default function Wrapper() {
                 totalScore = {playerData[1].totalScore}
                 onRollClick = {handleRollClick}
             />
-            <DiceColumn />
+            <DiceColumn 
+                handleDiceClick = {handleDiceClick}
+                dice = {dice}
+            />
         </div>
     )
 }

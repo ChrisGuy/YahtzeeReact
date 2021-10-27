@@ -1,27 +1,38 @@
 import Dice from "./Dice";
 
-export default function DiceColumn() {
-    return (
+export default function DiceColumn({ dice, handleDiceClick}) {
+    
+return (
         <div className="DiceColumn">
             <Dice 
-                active='true'
-                number = "1" 
+                id = "0"
+                active = {dice[0].active}
+                number = {dice[0].number}
+                handleDiceClick = {handleDiceClick} 
             />
             <Dice 
-                active='true'
-                number = "2"  
+                id = "1"
+                active = {dice[1].active}
+                number = {dice[1].number}
+                handleDiceClick = {handleDiceClick}   
             />
             <Dice 
-                active='true'
-                number = "1"  
+                id = "2"
+                active = {dice[2].active}
+                number = {dice[2].number}
+                handleDiceClick = {handleDiceClick}   
             />
             <Dice 
-                active='false'
-                number = "5"  
+                id = "3"
+                active = {dice[3].active}
+                number = {dice[3].number}
+                handleDiceClick = {handleDiceClick}  
             />
             <Dice 
-                active='false'
-                number = "1"  
+                id = "4"
+                active = {dice[4].active}
+                number = {dice[4].number}
+                handleDiceClick = {handleDiceClick}  
             />
         </div>
     )
