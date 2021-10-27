@@ -87,40 +87,40 @@ export default function ScoreCard({ scoreCard }) {
                 {scoreCard.ones.score}
             </div>
             <div className="TwosScore SCScore">
-                0
+                {scoreCard.twos.score}
             </div>
             <div className="ThreesScore SCScore">
-                0
+                {scoreCard.threes.score}
             </div>
             <div className="FoursScore SCScore">
-                0
+                {scoreCard.fours.score}
             </div>
             <div className="FivesScore SCScore">
-                0
+                {scoreCard.fives.score}
             </div>
             <div className="SixesScore SCScore">
-                0
+                {scoreCard.sixes.score}
             </div>
             <div className="ThreeXScore SCScore">
-                0 
+                {scoreCard.threeX.score} 
             </div>
             <div className="FourXScore SCScore">
-                0
+                {scoreCard.fourX.score}
             </div>
             <div className="FullHouseScore SCScore">
-                0
+                {scoreCard.fullHouse.score}
             </div>
             <div className="SmStraightScore SCScore">
-                0
+                {scoreCard.smStraight.score}
             </div>
             <div className="LgStraightScore SCScore">
-                0
+                {scoreCard.lgStraight.score}
             </div>
             <div className="YahtzeeScore SCScore">
-                0
+                {scoreCard.yahtzee.score}
             </div>
             <div className="ChanceScore SCScore">
-                0
+                {scoreCard.chance.score}
             </div>
 
         </div>

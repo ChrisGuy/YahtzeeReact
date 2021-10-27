@@ -39,7 +39,12 @@ export default function Wrapper() {
             // Update dice data with temp dice values
             setDice (tempDice.splice(0,5))
           }
-        toggleActive()
+          onesScore()
+          twosScore()  
+          threesScore()
+          foursScore()
+          fivesScore()
+          sixesScore()              
         }
 
 // Hold and un-hold dice
@@ -68,11 +73,163 @@ export default function Wrapper() {
         else {
             setActivePlayer(0)
             setPlayerData([
-                ...PlayerData,
+                ...playerData,
                 playerData[1].active = 1,
                 playerData[0].active = 0,
                 playerData[0].turns = 3
             ])
+        }
+    }
+
+    const onesScore = () => {
+        // Check if a score has been applied already, if not, update
+        if (!playerData[activePlayer].scorecard.ones.set) {
+            let scoreCalc = dice.filter(dice => {
+                return dice.number === 1
+            })
+            if (scoreCalc.length > 0) {
+
+                setPlayerData([
+                    ...playerData,
+                    playerData[activePlayer].scorecard.ones.score = scoreCalc.length
+                ])
+            }
+            else 
+            {
+                setPlayerData([
+                    ...playerData,
+                    playerData[activePlayer].scorecard.ones.score = 0
+                ])
+            }
+        }
+    }
+
+    const twosScore = () => {
+        // Check if a score has been applied already, if not, update
+        if (!playerData[activePlayer].scorecard.twos.set) {
+            let scoreCalc = dice.filter(dice => {
+                return dice.number === 2
+            })
+            if (scoreCalc.length > 0) {
+
+                setPlayerData([
+                    ...playerData,
+                    playerData[activePlayer].scorecard.twos.score = scoreCalc.length * 2
+                ])
+            }
+            else 
+            {
+                setPlayerData([
+                    ...playerData,
+                    playerData[activePlayer].scorecard.twos.score = 0
+                ])
+            }
+        }
+    }
+
+    const threesScore = () => {
+        // Check if a score has been applied already, if not, update
+        if (!playerData[activePlayer].scorecard.threes.set) {
+            let scoreCalc = dice.filter(dice => {
+                return dice.number === 3
+            })
+            if (scoreCalc.length > 0) {
+
+                setPlayerData([
+                    ...playerData,
+                    playerData[activePlayer].scorecard.threes.score = scoreCalc.length * 3
+                ])
+            }
+            else 
+            {
+                setPlayerData([
+                    ...playerData,
+                    playerData[activePlayer].scorecard.threes.score = 0
+                ])
+            }
+        }
+    }
+
+    const foursScore = () => {
+        // Check if a score has been applied already, if not, update
+        if (!playerData[activePlayer].scorecard.fours.set) {
+            let scoreCalc = dice.filter(dice => {
+                return dice.number === 4
+            })
+            if (scoreCalc.length > 0) {
+
+                setPlayerData([
+                    ...playerData,
+                    playerData[activePlayer].scorecard.fours.score = scoreCalc.length * 4
+                ])
+            }
+            else 
+            {
+                setPlayerData([
+                    ...playerData,
+                    playerData[activePlayer].scorecard.fours.score = 0
+                ])
+            }
+        }
+    }
+
+    const fivesScore = () => {
+        // Check if a score has been applied already, if not, update
+        if (!playerData[activePlayer].scorecard.fives.set) {
+            let scoreCalc = dice.filter(dice => {
+                return dice.number === 5
+            })
+            if (scoreCalc.length > 0) {
+
+                setPlayerData([
+                    ...playerData,
+                    playerData[activePlayer].scorecard.fives.score = scoreCalc.length * 5
+                ])
+            }
+            else 
+            {
+                setPlayerData([
+                    ...playerData,
+                    playerData[activePlayer].scorecard.fives.score = 0
+                ])
+            }
+        }
+    }
+
+    const sixesScore = () => {
+        // Check if a score has been applied already, if not, update
+        if (!playerData[activePlayer].scorecard.sixes.set) {
+            let scoreCalc = dice.filter(dice => {
+                return dice.number === 6
+            })
+            if (scoreCalc.length > 0) {
+
+                setPlayerData([
+                    ...playerData,
+                    playerData[activePlayer].scorecard.sixes.score = scoreCalc.length * 6
+                ])
+            }
+            else 
+            {
+                setPlayerData([
+                    ...playerData,
+                    playerData[activePlayer].scorecard.sixes.score = 0
+                ])
+            }
+        }
+    }
+
+    const chanceScore = () => {
+        // Check if a score has been applied already, if not, update
+        if (!playerData[activePlayer].scorecard.chance.set) {
+            let scoreCalc = dice.map(dice => {
+                return dice.number
+            }).reduce((a, b) => a + b)
+            setPlayerData([
+                ...playerData,
+                playerData[activePlayer].scorecard.chance.score = scoreCalc
+            ])
+            console.log(playerData);
         }
     }
 
