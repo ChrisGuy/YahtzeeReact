@@ -44,19 +44,23 @@ export default function Wrapper() {
           threesScore()
           foursScore()
           fivesScore()
-          sixesScore()              
+          sixesScore()
+          chanceScore()           
         }
 
 // Hold and un-hold dice
     const handleDiceClick = (e) => {
-        const tempActive = dice[e.target.id].active
-        let tempDice = dice
-        tempDice = [
-            ...tempDice,
-            dice[e.target.id].active = !tempActive
-        ]
-        // Update dice data with temp dice hold values
-        setDice(tempDice.splice(0,5))
+
+        if (playerData[activePlayer].turns > 0 && playerData[activePlayer].turns < 3){
+            const tempActive = dice[e.target.id].active
+            let tempDice = dice
+            tempDice = [
+                ...tempDice,
+                dice[e.target.id].active = !tempActive
+            ]
+            // Update dice data with temp dice hold values
+            setDice(tempDice.splice(0,5))
+        }
     }
 
     //Switch between active players
@@ -229,7 +233,6 @@ export default function Wrapper() {
                 ...playerData,
                 playerData[activePlayer].scorecard.chance.score = scoreCalc
             ])
-            console.log(playerData);
         }
     }
 

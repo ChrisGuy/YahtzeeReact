@@ -28,6 +28,7 @@ export default function PlayerPanel({ playerNumber, active, totalScore, scorecar
 
             <ScoreCard 
                 scoreCard = {scorecard}
+                active = {active}
             />
         </div>
     )
