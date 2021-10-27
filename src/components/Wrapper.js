@@ -18,6 +18,20 @@ export default function Wrapper() {
             ...playerData,
             playerData[e.target.id].turns = tempTurns - 1 ]
         )
+        
+        for (let i = 0; i < 5; i++) {
+            // Identifies "held" dice and skips the roll on them
+            if (dice[i].active) {
+              continue
+            } else {
+                setDice([
+                    ...dice,
+                    dice[i].number = (Math.floor(Math.random() * 6) + 1)
+                ])
+              
+            }
+          }
+        
     }
 
     const handleDiceClick = (e) => {
