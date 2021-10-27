@@ -8,41 +8,73 @@ import { useState } from "react"
 export default function Wrapper() {
 
     const [playerData, setPlayerData] = useState(PlayerData)
-
     const [dice, setDice] = useState(DiceData)
+    const [activePlayer, setActivePlayer] = useState(0)
 
+
+// Roll the dice and reduce turn count
     const handleRollClick = (e) => {
-        e.preventDefault();
+        e.preventDefault()
         const tempTurns = playerData[e.target.id].turns
+        // Reduce active player's turn count
         setPlayerData([
             ...playerData,
             playerData[e.target.id].turns = tempTurns - 1 ]
         )
-        
-        for (let i = 0; i < 5; i++) {
+        // Loop through the dice
+        for (let i = 0; i <= 4 ; i++) {
+            let tempDice = dice
             // Identifies "held" dice and skips the roll on them
             if (dice[i].active) {
-              continue
-            } else {
-                setDice([
-                    ...dice,
-                    dice[i].number = (Math.floor(Math.random() * 6) + 1)
-                ])
-              
+                continue 
             }
+            // Generate random number on un-held dice
+            else 
+            {
+                tempDice = [
+                    ...tempDice,
+                    dice[i].number = (Math.floor(Math.random() * 6) + 1)
+                ]
+            }
+            // Update dice data with temp dice values
+            setDice (tempDice.splice(0,5))
           }
-        
-    }
+        toggleActive()
+        }
 
+// Hold and un-hold dice
     const handleDiceClick = (e) => {
         const tempActive = dice[e.target.id].active
-        setDice([
-            ...dice,
+        let tempDice = dice
+        tempDice = [
+            ...tempDice,
             dice[e.target.id].active = !tempActive
-        ])
+        ]
+        // Update dice data with temp dice hold values
+        setDice(tempDice.splice(0,5))
     }
 
-    console.log(dice);
+    //Switch between active players
+    const toggleActive = () => {
+        if (!activePlayer) {
+            setActivePlayer(1)
+            setPlayerData([
+                ...PlayerData,
+                playerData[0].active = 1,
+                playerData[1].active = 0,
+                playerData[1].turns = 3
+            ])
+        }
+        else {
+            setActivePlayer(0)
+            setPlayerData([
+                ...PlayerData,
+                playerData[1].active = 1,
+                playerData[0].active = 0,
+                playerData[0].turns = 3
+            ])
+        }
+    }
 
     return (
         <div id="Wrapper">
@@ -65,6 +97,8 @@ export default function Wrapper() {
             <DiceColumn 
                 handleDiceClick = {handleDiceClick}
                 dice = {dice}
+                activePlayer = {playerData}
+                turns = {playerData}
             />
         </div>
     )

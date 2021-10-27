@@ -56,6 +56,10 @@ img.Dice.active{
 }
 
 .Dice:hover {
+  cursor: not-allowed;
+}
+
+.Dicehover:hover {
   box-shadow: none;
   cursor: pointer;
   border: 3px solid #ffbaba;
