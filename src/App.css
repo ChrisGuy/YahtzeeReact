@@ -135,6 +135,10 @@ img.Dice.active{
   ". . . chance chanceLabel chanceScore";
 }
 
+.SCScore.set {
+  border: solid 2px #4BB543
+}
+
 .Ones {grid-area: ones;}
 .OnesLabel {grid-area: onesLabel;}
 .OnesScore {grid-area: onesScore;}

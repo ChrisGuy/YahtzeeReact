@@ -83,43 +83,133 @@ export default function ScoreCard({ scoreCard }) {
                 Chance
             </div>
 
-            <div className="OnesScore SCScore">
+            <div 
+                className=
+                    {`
+                        OnesScore 
+                        SCScore 
+                        ${scoreCard.ones.set ? "set" : ""}
+                    `}
+            >
                 {scoreCard.ones.score}
             </div>
-            <div className="TwosScore SCScore">
+            <div 
+                className=
+                    {`
+                        TwosScore 
+                        SCScore 
+                        ${scoreCard.twos.set ? "set" : ""}
+                    `}
+            >
                 {scoreCard.twos.score}
             </div>
-            <div className="ThreesScore SCScore">
+            <div 
+                className=
+                    {`
+                        ThreesScore 
+                        SCScore 
+                        ${scoreCard.threes.set ? "set" : ""}
+                    `}
+            >
                 {scoreCard.threes.score}
             </div>
-            <div className="FoursScore SCScore">
+            <div 
+                className=
+                    {`
+                        FoursScore 
+                        SCScore 
+                        ${scoreCard.fours.set ? "set" : ""}
+                    `}
+            >
                 {scoreCard.fours.score}
             </div>
-            <div className="FivesScore SCScore">
+            <div 
+                className=
+                    {`
+                        FivesScore 
+                        SCScore 
+                        ${scoreCard.fives.set ? "set" : ""}
+                    `}
+            >
                 {scoreCard.fives.score}
             </div>
-            <div className="SixesScore SCScore">
+            <div 
+                className=
+                    {`
+                        SixesScore 
+                        SCScore 
+                        ${scoreCard.sixes.set ? "set" : ""}
+                    `}
+            >
                 {scoreCard.sixes.score}
             </div>
-            <div className="ThreeXScore SCScore">
+            <div 
+                className=
+                    {`
+                        ThreeXScore 
+                        SCScore 
+                        ${scoreCard.threeX.set ? "set" : ""}
+                    `}
+            >
                 {scoreCard.threeX.score} 
             </div>
-            <div className="FourXScore SCScore">
+            <div 
+                className=
+                    {`
+                        FourXScore 
+                        SCScore 
+                        ${scoreCard.fourX.set ? "set" : ""}
+                    `}
+            >
                 {scoreCard.fourX.score}
             </div>
-            <div className="FullHouseScore SCScore">
+            <div 
+                className=
+                    {`
+                        FullHouseScore 
+                        SCScore 
+                        ${scoreCard.fullHouse.set ? "set" : ""}
+                    `}
+            >
                 {scoreCard.fullHouse.score}
             </div>
-            <div className="SmStraightScore SCScore">
+            <div 
+                className=
+                    {`
+                        SmStraightScore 
+                        SCScore 
+                        ${scoreCard.smStraight.set ? "set" : ""}
+                    `}
+            >
                 {scoreCard.smStraight.score}
             </div>
-            <div className="LgStraightScore SCScore">
+            <div 
+                className=
+                    {`
+                        LgStraightScore 
+                        SCScore 
+                        ${scoreCard.lgStraight.set ? "set" : ""}
+                    `}
+            >
                 {scoreCard.lgStraight.score}
             </div>
-            <div className="YahtzeeScore SCScore">
+            <div 
+                className=
+                    {`
+                        YahtzeeScore 
+                        SCScore 
+                        ${scoreCard.yahtzee.set ? "set" : ""}
+                    `}>
                 {scoreCard.yahtzee.score}
             </div>
-            <div className="ChanceScore SCScore">
+            <div 
+                className=
+                    {`
+                        ChanceScore 
+                        SCScore 
+                        ${scoreCard.chance.set ? "set" : ""}
+                    `}
+                >
                 {scoreCard.chance.score}
             </div>
 
