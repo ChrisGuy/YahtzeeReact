@@ -45,7 +45,8 @@ export default function Wrapper() {
           foursScore()
           fivesScore()
           sixesScore()
-          chanceScore()           
+          chanceScore()
+          totalScore()           
         }
 
 // Hold and un-hold dice
@@ -70,10 +71,36 @@ export default function Wrapper() {
             ...playerData,
             playerData[activePlayer].scorecard[e.target.id].set = !tempSet
         ])
+        totalScore()  
         toggleActive()
     }
 
-    //Switch between active players
+// Calculate the total score
+    const totalScore = ()  => {
+        let tempTotalScore = [[0],[0]]
+        let p1ScoreTotal = "0"
+        let p2ScoreTotal = "0"
+        for (let j = 0; j < 2; j++) {
+            for (let i = 0; i < 13; i++) {
+                if(playerData[j].scorecard[i].set){
+                    tempTotalScore[j].push(playerData[j].scorecard[i].score)
+                    console.log(tempTotalScore);
+                    p1ScoreTotal = tempTotalScore[0].reduce((a, b) => a + b)
+                    p2ScoreTotal = tempTotalScore[1].reduce((a, b) => a + b)
+                }
+                console.log(tempTotalScore[0].reduce((a, b) => a + b));
+            }
+            setPlayerData([
+                ...playerData,
+                playerData[0].totalScore = p1ScoreTotal,
+                playerData[1].totalScore = p2ScoreTotal
+            ])
+            console.log(p1ScoreTotal + " " + p2ScoreTotal);
+        }
+        tempTotalScore = [[0],[0]]
+    }
+
+//Switch between active players
     const toggleActive = () => {
         if (!activePlayer) {
             setActivePlayer(1)
@@ -94,8 +121,6 @@ export default function Wrapper() {
                 playerData[0].active = 1,
                 playerData[0].turns = 3
             ])
-            console.log(activePlayer);
-            console.log(playerData);
         }
     }
 
