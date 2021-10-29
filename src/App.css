@@ -210,8 +210,13 @@ img.Dice.active{
 
 .SCScore.set,
 .SCLabel.set {
-  border: solid 2px #4BB543
+  border-style: solid;
+  border-color: #4BB543; 
 }
+
+.SCLabel.set { border-width: 2px 0 2px 2px; }
+
+.SCScore.set { border-width: 2px 2px 2px 0; }
 
 .SCIcon,
 .SCLabel,
@@ -225,6 +230,9 @@ img.Dice.active{
 .SCLabel,
 .SCScore {
 background-color: #ffffff;
-border-radius: 5%;
 border: 1px solid rgba(0, 0, 0, 0.1);
 }
+
+.SCLabel { border-radius: 5% 0 0 5%;}
+
+.SCScore { border-radius: 0 5% 5% 0;}

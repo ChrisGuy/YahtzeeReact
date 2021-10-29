@@ -46,7 +46,8 @@ export default function Wrapper() {
           fivesScore()
           sixesScore()
           chanceScore()
-          totalScore()           
+          totalScore()       
+          console.log(dice);    
         }
 
 // Hold and un-hold dice
@@ -64,14 +65,29 @@ export default function Wrapper() {
         }
     }
 
+// Clear the hold setting on dice as active player changes
+    const resetActiveDice = () => {
+        for (let i = 0; i < 5; i++) {
+            setDice([
+                ...dice,
+                dice[i].active = false
+            ])
+        }
+        console.log(dice);
+    }
+
 // Save the score
     const setScore = (e) => {
+        e.preventDefault()
         let tempSet = playerData[activePlayer].scorecard[e.target.id].set
         setPlayerData([
             ...playerData,
             playerData[activePlayer].scorecard[e.target.id].set = !tempSet
         ])
-        totalScore()  
+               
+        console.log(playerData);
+        totalScore()
+        clearTempScores()  
         toggleActive()
     }
 
@@ -88,16 +104,28 @@ export default function Wrapper() {
                     p1ScoreTotal = tempTotalScore[0].reduce((a, b) => a + b)
                     p2ScoreTotal = tempTotalScore[1].reduce((a, b) => a + b)
                 }
-                console.log(tempTotalScore[0].reduce((a, b) => a + b));
             }
             setPlayerData([
                 ...playerData,
                 playerData[0].totalScore = p1ScoreTotal,
                 playerData[1].totalScore = p2ScoreTotal
             ])
-            console.log(p1ScoreTotal + " " + p2ScoreTotal);
         }
         tempTotalScore = [[0],[0]]
+    }
+
+// Clear temporary scores on active player change
+    const clearTempScores = () => {
+        for (let i = 0; i < 13; i++) {
+            if (playerData[activePlayer ? 1 : 0].scorecard[i].set === false) {
+                setPlayerData([
+                    ...playerData,
+                    playerData[activePlayer ? 1 : 0].scorecard[i].score = "0"
+                ])
+                console.log(playerData[activePlayer ? 0 : 1].scorecard[i].score);
+            }
+        }
+        console.log(playerData);
     }
 
 //Switch between active players
@@ -110,8 +138,6 @@ export default function Wrapper() {
                 playerData[1].active = 1,
                 playerData[1].turns = 3
             ])
-            console.log(activePlayer);
-            console.log(playerData);
         }
         else {
             setActivePlayer(0)
@@ -122,6 +148,8 @@ export default function Wrapper() {
                 playerData[0].turns = 3
             ])
         }
+        resetActiveDice()       
+        console.log(dice);
     }
 
     const onesScore = () => {
@@ -265,7 +293,8 @@ export default function Wrapper() {
     const chanceScore = () => {
         // Check if a score has been applied already, if not, update
         if (!playerData[activePlayer].scorecard[12].set) {
-            let scoreCalc = dice.map(dice => {
+            let tempArr = dice.splice(0, 5)
+            let scoreCalc = tempArr.map(dice => {
                 return dice.number
             }).reduce((a, b) => a + b)
             setPlayerData([
