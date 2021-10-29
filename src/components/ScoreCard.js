@@ -1,6 +1,6 @@
 import { FaDiceOne, FaDiceTwo, FaDiceThree, FaDiceFour, FaDiceFive, FaDiceSix, FaHome, FaStar } from "react-icons/fa";
 
-export default function ScoreCard({ scoreCard }) {
+export default function ScoreCard({ scoreCard, setScoreClick}) {
     return (
         <div className="ScoreCard">
             <div className="Ones SCIcon">
@@ -43,174 +43,291 @@ export default function ScoreCard({ scoreCard }) {
                 <p>CH</p>
             </div>
 
-            <div className="OnesLabel SCLabel">
+            <button 
+                id="0"
+                className=
+                {`
+                    OnesLabel 
+                    SCLabel 
+                    ${scoreCard[0].set ? "set" : ""}
+                `}
+                onClick={setScoreClick}
+            >
                 Ones
-            </div>
-            <div className="TwosLabel SCLabel">
+            </button>
+            <button 
+                id="1"
+                className=
+                {`
+                    TwosLabel 
+                    SCLabel 
+                    ${scoreCard[1].set ? "set" : ""}
+                `}
+                onClick={setScoreClick}
+            >
                 Twos
-            </div>
-            <div className="ThreesLabel SCLabel">
+            </button>
+            <button 
+                id="2"
+                className=
+                {`
+                    ThreesLabel 
+                    SCLabel 
+                    ${scoreCard[2].set ? "set" : ""}
+                `}
+                onClick={setScoreClick}
+            >
                 Threes
-            </div>
-            <div className="FoursLabel SCLabel">
+            </button>
+            <button 
+                id="3"
+                className=
+                {`
+                    FoursLabel 
+                    SCLabel 
+                    ${scoreCard[3].set ? "set" : ""}
+                `}
+                onClick={setScoreClick}
+            >
                 Fours
-            </div>
-            <div className="FivesLabel SCLabel">
+            </button>
+            <button 
+                id="4"
+                className=
+                {`
+                    FivesLabel 
+                    SCLabel 
+                    ${scoreCard[4].set ? "set" : ""}
+                `}
+                onClick={setScoreClick}
+            >
                 Fives
-            </div>
-            <div className="SixesLabel SCLabel">
+            </button>
+            <button 
+                id="5"
+                className=
+                {`
+                    SixesLabel 
+                    SCLabel 
+                    ${scoreCard[5].set ? "set" : ""}
+                `}
+                onClick={setScoreClick}
+            >
                 Sixes
-            </div>
-            <div className="ThreeXLabel SCLabel">
-                3 of a Kind 
-            </div>
-            <div className="FourXLabel SCLabel">
-                4 of a kind
-            </div>
-            <div className="FullHouseLabel SCLabel">
+            </button>
+            <button 
+                id="6"
+                className=
+                {`
+                    ThreeXLabel 
+                    SCLabel 
+                    ${scoreCard[6].set ? "set" : ""}
+                `}
+                onClick={setScoreClick}
+            >
+                3 of a Kind
+            </button>
+            <button 
+                id="7"
+                className=
+                {`
+                    FourXLabel 
+                    SCLabel 
+                    ${scoreCard[7].set ? "set" : ""}
+                `}
+                onClick={setScoreClick}
+            >
+                4 of a Kind
+            </button>
+            <button 
+                id="8"
+                className=
+                {`
+                    FullHouseLabel 
+                    SCLabel 
+                    ${scoreCard[8].set ? "set" : ""}
+                `}
+                onClick={setScoreClick}
+            >
                 Full House
-            </div>
-            <div className="SmStraightLabel SCLabel">
+            </button>
+            <button 
+                id="9"
+                className=
+                {`
+                    SmStraightLabel 
+                    SCLabel 
+                    ${scoreCard[9].set ? "set" : ""}
+                `}
+                onClick={setScoreClick}
+            >
                 Sm Straight
-            </div>
-            <div className="LgStraightLabel SCLabel">
+            </button>
+            <button 
+                id="10"
+                className=
+                {`
+                    LgStraightLabel 
+                    SCLabel 
+                    ${scoreCard[10].set ? "set" : ""}
+                `}
+                onClick={setScoreClick}
+            >
                 Lg Straight
-            </div>
-            <div className="YahtzeeLabel SCLabel">
+            </button>
+            <button 
+                id="11"
+                className=
+                {`
+                    YahtzeeLabel 
+                    SCLabel 
+                    ${scoreCard[11].set ? "set" : ""}
+                `}
+                onClick={setScoreClick}
+            >
                 Yahtzee
-            </div>
-            <div className="ChanceLabel SCLabel">
+            </button>
+            <button 
+                id="12"
+                className=
+                {`
+                    ChanceLabel 
+                    SCLabel 
+                    ${scoreCard[12].set ? "set" : ""}
+                `}
+                onClick={setScoreClick}
+            >
                 Chance
-            </div>
+            </button>
 
             <div 
                 className=
                     {`
                         OnesScore 
                         SCScore 
-                        ${scoreCard.ones.set ? "set" : ""}
+                        ${scoreCard[0].set ? "set" : ""}
                     `}
             >
-                {scoreCard.ones.score}
+                {scoreCard[0].score}
             </div>
             <div 
                 className=
                     {`
                         TwosScore 
                         SCScore 
-                        ${scoreCard.twos.set ? "set" : ""}
+                        ${scoreCard[1].set ? "set" : ""}
                     `}
             >
-                {scoreCard.twos.score}
+                {scoreCard[1].score}
             </div>
             <div 
                 className=
                     {`
                         ThreesScore 
                         SCScore 
-                        ${scoreCard.threes.set ? "set" : ""}
+                        ${scoreCard[2].set ? "set" : ""}
                     `}
             >
-                {scoreCard.threes.score}
+                {scoreCard[2].score}
             </div>
             <div 
                 className=
                     {`
                         FoursScore 
                         SCScore 
-                        ${scoreCard.fours.set ? "set" : ""}
+                        ${scoreCard[3].set ? "set" : ""}
                     `}
             >
-                {scoreCard.fours.score}
+                {scoreCard[3].score}
             </div>
             <div 
                 className=
                     {`
                         FivesScore 
                         SCScore 
-                        ${scoreCard.fives.set ? "set" : ""}
+                        ${scoreCard[4].set ? "set" : ""}
                     `}
             >
-                {scoreCard.fives.score}
+                {scoreCard[4].score}
             </div>
             <div 
                 className=
                     {`
                         SixesScore 
                         SCScore 
-                        ${scoreCard.sixes.set ? "set" : ""}
+                        ${scoreCard[5].set ? "set" : ""}
                     `}
             >
-                {scoreCard.sixes.score}
+                {scoreCard[5].score}
             </div>
             <div 
                 className=
                     {`
                         ThreeXScore 
                         SCScore 
-                        ${scoreCard.threeX.set ? "set" : ""}
+                        ${scoreCard[6].set ? "set" : ""}
                     `}
             >
-                {scoreCard.threeX.score} 
+                {scoreCard[6].score} 
             </div>
             <div 
                 className=
                     {`
                         FourXScore 
                         SCScore 
-                        ${scoreCard.fourX.set ? "set" : ""}
+                        ${scoreCard[7].set ? "set" : ""}
                     `}
             >
-                {scoreCard.fourX.score}
+                {scoreCard[7].score}
             </div>
             <div 
                 className=
                     {`
                         FullHouseScore 
                         SCScore 
-                        ${scoreCard.fullHouse.set ? "set" : ""}
+                        ${scoreCard[8].set ? "set" : ""}
                     `}
             >
-                {scoreCard.fullHouse.score}
+                {scoreCard[8].score}
             </div>
             <div 
                 className=
                     {`
                         SmStraightScore 
                         SCScore 
-                        ${scoreCard.smStraight.set ? "set" : ""}
+                        ${scoreCard[9].set ? "set" : ""}
                     `}
             >
-                {scoreCard.smStraight.score}
+                {scoreCard[9].score}
             </div>
             <div 
                 className=
                     {`
                         LgStraightScore 
                         SCScore 
-                        ${scoreCard.lgStraight.set ? "set" : ""}
+                        ${scoreCard[10].set ? "set" : ""}
                     `}
             >
-                {scoreCard.lgStraight.score}
+                {scoreCard[10].score}
             </div>
             <div 
                 className=
                     {`
                         YahtzeeScore 
                         SCScore 
-                        ${scoreCard.yahtzee.set ? "set" : ""}
+                        ${scoreCard[11].set ? "set" : ""}
                     `}>
-                {scoreCard.yahtzee.score}
+                {scoreCard[11].score}
             </div>
             <div 
                 className=
                     {`
                         ChanceScore 
                         SCScore 
-                        ${scoreCard.chance.set ? "set" : ""}
+                        ${scoreCard[12].set ? "set" : ""}
                     `}
                 >
-                {scoreCard.chance.score}
+                {scoreCard[12].score}
             </div>
 
         </div>

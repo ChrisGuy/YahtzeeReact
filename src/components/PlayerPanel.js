@@ -1,7 +1,7 @@
 import PlayerInfo from "./PlayerInfo"
 import ScoreCard from "./ScoreCard"
 
-export default function PlayerPanel({ playerNumber, active, totalScore, scorecard, turns, onRollClick }) {
+export default function PlayerPanel({ playerNumber, active, totalScore, scorecard, turns, onRollClick, setScoreClick }) {
 
     return (
         <div 
@@ -29,6 +29,7 @@ export default function PlayerPanel({ playerNumber, active, totalScore, scorecar
             <ScoreCard 
                 scoreCard = {scorecard}
                 active = {active}
+                setScoreClick = {setScoreClick}
             />
         </div>
     )

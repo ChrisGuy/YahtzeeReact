@@ -63,31 +63,45 @@ export default function Wrapper() {
         }
     }
 
+// Save the score
+    const setScore = (e) => {
+        let tempSet = playerData[activePlayer].scorecard[e.target.id].set
+        setPlayerData([
+            ...playerData,
+            playerData[activePlayer].scorecard[e.target.id].set = !tempSet
+        ])
+        toggleActive()
+    }
+
     //Switch between active players
     const toggleActive = () => {
         if (!activePlayer) {
             setActivePlayer(1)
             setPlayerData([
                 ...PlayerData,
-                playerData[0].active = 1,
-                playerData[1].active = 0,
+                playerData[0].active = 0,
+                playerData[1].active = 1,
                 playerData[1].turns = 3
             ])
+            console.log(activePlayer);
+            console.log(playerData);
         }
         else {
             setActivePlayer(0)
             setPlayerData([
                 ...playerData,
-                playerData[1].active = 1,
-                playerData[0].active = 0,
+                playerData[1].active = 0,
+                playerData[0].active = 1,
                 playerData[0].turns = 3
             ])
+            console.log(activePlayer);
+            console.log(playerData);
         }
     }
 
     const onesScore = () => {
         // Check if a score has been applied already, if not, update
-        if (!playerData[activePlayer].scorecard.ones.set) {
+        if (!playerData[activePlayer].scorecard[0].set) {
             let scoreCalc = dice.filter(dice => {
                 return dice.number === 1
             })
@@ -95,14 +109,14 @@ export default function Wrapper() {
 
                 setPlayerData([
                     ...playerData,
-                    playerData[activePlayer].scorecard.ones.score = scoreCalc.length
+                    playerData[activePlayer].scorecard[0].score = scoreCalc.length
                 ])
             }
             else 
             {
                 setPlayerData([
                     ...playerData,
-                    playerData[activePlayer].scorecard.ones.score = 0
+                    playerData[activePlayer].scorecard[0].score = 0
                 ])
             }
         }
@@ -110,7 +124,7 @@ export default function Wrapper() {
 
     const twosScore = () => {
         // Check if a score has been applied already, if not, update
-        if (!playerData[activePlayer].scorecard.twos.set) {
+        if (!playerData[activePlayer].scorecard[1].set) {
             let scoreCalc = dice.filter(dice => {
                 return dice.number === 2
             })
@@ -118,14 +132,14 @@ export default function Wrapper() {
 
                 setPlayerData([
                     ...playerData,
-                    playerData[activePlayer].scorecard.twos.score = scoreCalc.length * 2
+                    playerData[activePlayer].scorecard[1].score = scoreCalc.length * 2
                 ])
             }
             else 
             {
                 setPlayerData([
                     ...playerData,
-                    playerData[activePlayer].scorecard.twos.score = 0
+                    playerData[activePlayer].scorecard[1].score = 0
                 ])
             }
         }
@@ -133,7 +147,7 @@ export default function Wrapper() {
 
     const threesScore = () => {
         // Check if a score has been applied already, if not, update
-        if (!playerData[activePlayer].scorecard.threes.set) {
+        if (!playerData[activePlayer].scorecard[2].set) {
             let scoreCalc = dice.filter(dice => {
                 return dice.number === 3
             })
@@ -141,14 +155,14 @@ export default function Wrapper() {
 
                 setPlayerData([
                     ...playerData,
-                    playerData[activePlayer].scorecard.threes.score = scoreCalc.length * 3
+                    playerData[activePlayer].scorecard[2].score = scoreCalc.length * 3
                 ])
             }
             else 
             {
                 setPlayerData([
                     ...playerData,
-                    playerData[activePlayer].scorecard.threes.score = 0
+                    playerData[activePlayer].scorecard[2].score = 0
                 ])
             }
         }
@@ -156,7 +170,7 @@ export default function Wrapper() {
 
     const foursScore = () => {
         // Check if a score has been applied already, if not, update
-        if (!playerData[activePlayer].scorecard.fours.set) {
+        if (!playerData[activePlayer].scorecard[3].set) {
             let scoreCalc = dice.filter(dice => {
                 return dice.number === 4
             })
@@ -164,14 +178,14 @@ export default function Wrapper() {
 
                 setPlayerData([
                     ...playerData,
-                    playerData[activePlayer].scorecard.fours.score = scoreCalc.length * 4
+                    playerData[activePlayer].scorecard[3].score = scoreCalc.length * 4
                 ])
             }
             else 
             {
                 setPlayerData([
                     ...playerData,
-                    playerData[activePlayer].scorecard.fours.score = 0
+                    playerData[activePlayer].scorecard[3].score = 0
                 ])
             }
         }
@@ -179,7 +193,7 @@ export default function Wrapper() {
 
     const fivesScore = () => {
         // Check if a score has been applied already, if not, update
-        if (!playerData[activePlayer].scorecard.fives.set) {
+        if (!playerData[activePlayer].scorecard[4].set) {
             let scoreCalc = dice.filter(dice => {
                 return dice.number === 5
             })
@@ -187,14 +201,14 @@ export default function Wrapper() {
 
                 setPlayerData([
                     ...playerData,
-                    playerData[activePlayer].scorecard.fives.score = scoreCalc.length * 5
+                    playerData[activePlayer].scorecard[4].score = scoreCalc.length * 5
                 ])
             }
             else 
             {
                 setPlayerData([
                     ...playerData,
-                    playerData[activePlayer].scorecard.fives.score = 0
+                    playerData[activePlayer].scorecard[4].score = 0
                 ])
             }
         }
@@ -202,7 +216,7 @@ export default function Wrapper() {
 
     const sixesScore = () => {
         // Check if a score has been applied already, if not, update
-        if (!playerData[activePlayer].scorecard.sixes.set) {
+        if (!playerData[activePlayer].scorecard[5].set) {
             let scoreCalc = dice.filter(dice => {
                 return dice.number === 6
             })
@@ -210,14 +224,14 @@ export default function Wrapper() {
 
                 setPlayerData([
                     ...playerData,
-                    playerData[activePlayer].scorecard.sixes.score = scoreCalc.length * 6
+                    playerData[activePlayer].scorecard[5].score = scoreCalc.length * 6
                 ])
             }
             else 
             {
                 setPlayerData([
                     ...playerData,
-                    playerData[activePlayer].scorecard.sixes.score = 0
+                    playerData[activePlayer].scorecard[5].score = 0
                 ])
             }
         }
@@ -225,13 +239,13 @@ export default function Wrapper() {
 
     const chanceScore = () => {
         // Check if a score has been applied already, if not, update
-        if (!playerData[activePlayer].scorecard.chance.set) {
+        if (!playerData[activePlayer].scorecard[12].set) {
             let scoreCalc = dice.map(dice => {
                 return dice.number
             }).reduce((a, b) => a + b)
             setPlayerData([
                 ...playerData,
-                playerData[activePlayer].scorecard.chance.score = scoreCalc
+                playerData[activePlayer].scorecard[12].score = scoreCalc
             ])
         }
     }
@@ -245,6 +259,7 @@ export default function Wrapper() {
                 scorecard = {playerData[0].scorecard}
                 totalScore = {playerData[0].totalScore}
                 onRollClick = {handleRollClick}
+                setScoreClick = {setScore}
             />
             <PlayerPanel 
                 playerNumber = '2'
@@ -253,6 +268,7 @@ export default function Wrapper() {
                 scorecard = {playerData[1].scorecard}
                 totalScore = {playerData[1].totalScore}
                 onRollClick = {handleRollClick}
+                setScoreClick = {setScore}
             />
             <DiceColumn 
                 handleDiceClick = {handleDiceClick}

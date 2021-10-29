@@ -135,10 +135,6 @@ img.Dice.active{
   ". . . chance chanceLabel chanceScore";
 }
 
-.SCScore.set {
-  border: solid 2px #4BB543
-}
-
 .Ones {grid-area: ones;}
 .OnesLabel {grid-area: onesLabel;}
 .OnesScore {grid-area: onesScore;}
@@ -204,6 +200,17 @@ img.Dice.active{
 
 .SCLabel {
   font-size: 12px;
+}
+
+.SCLabel:not(.set):hover {
+  cursor: pointer;
+  font-weight: bold;
+  border: solid 2px red
+}
+
+.SCScore.set,
+.SCLabel.set {
+  border: solid 2px #4BB543
 }
 
 .SCIcon,
