@@ -47,6 +47,9 @@ export default function Wrapper() {
           fivesScore()
           sixesScore()
           threeOfAKindScore()
+          fourOfAKindScore()
+          fullHouseScore()
+          smallStraightScore()
           yahtzeeScore()
           chanceScore()
           totalScore()        
@@ -94,8 +97,6 @@ export default function Wrapper() {
             ...playerData,
             playerData[activePlayer].scorecard[e.target.id].set = !tempSet
         ])
-               
-        console.log(playerData);
         totalScore()
         clearTempScores()  
         toggleActive()
@@ -323,6 +324,50 @@ export default function Wrapper() {
         }
         
     }
+
+// FOUR OF A KIND
+    const fourOfAKindScore = () => {
+        let fourOfAKind = []
+        let scoreCalc 
+
+        for (let i = 0; i < 5; i++) {
+            fourOfAKind.push(dice[i].number)
+            scoreCalc = fourOfAKind.reduce((a, b) => a + b)
+        }
+
+        for (let j = 1; j < 7; j++) {
+            let result = fourOfAKind.filter(num => num === j)
+
+            if (result.length >= 4) {
+                setPlayerData([
+                    ...playerData,
+                    playerData[activePlayer].scorecard[7].score = scoreCalc
+                ])
+            }
+        }
+        
+    }
+
+// FULL HOUSE
+    const fullHouseScore = () => {
+        let fullHouseArr = []
+
+        for (let i = 0; i < 5; i++) {
+            fullHouseArr.push(dice[i].number)
+        }
+
+        var count = {};
+        fullHouseArr.forEach(function(i) { count[i] = (count[i]||0) + 1;});
+
+        if (Object.keys(count).length < 3) {
+            setPlayerData([
+                ...playerData,
+                playerData[activePlayer].scorecard[8].score = 25
+            ])
+        }
+    
+    }
+
 
 // YAHTZEE
     const yahtzeeScore = () => {
