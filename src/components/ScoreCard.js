@@ -3,7 +3,7 @@ import { FaDiceOne, FaDiceTwo, FaDiceThree, FaDiceFour, FaDiceFive, FaDiceSix, F
 export default function ScoreCard({ scoreCard, setScoreClick, active, playerNumber, turns}) {
     
     const disabledCheck = (i) => {
-        if (turns > 0 && turns < 3) {
+        if (turns < 3) {
             if (active) { 
                 if (scoreCard[i].set) {
                     return true

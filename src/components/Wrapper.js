@@ -48,8 +48,7 @@ export default function Wrapper() {
           sixesScore()
           yahtzeeScore()
           chanceScore()
-          totalScore()       
-          console.log(dice);    
+          totalScore()        
         }
 
 // Hold and un-hold dice
@@ -111,7 +110,6 @@ export default function Wrapper() {
             for (let i = 0; i < 13; i++) {
                 if(playerData[j].scorecard[i].set){
                     tempTotalScore[j].push(playerData[j].scorecard[i].score)
-                    console.log(tempTotalScore);
                     p1ScoreTotal = tempTotalScore[0].reduce((a, b) => a + b)
                     p2ScoreTotal = tempTotalScore[1].reduce((a, b) => a + b)
                 }
@@ -147,7 +145,8 @@ export default function Wrapper() {
                 ...PlayerData,
                 playerData[0].active = 0,
                 playerData[1].active = 1,
-                playerData[1].turns = 3
+                playerData[1].turns = 3,
+                playerData[0].turns = 3
             ])
         }
         else {
@@ -156,7 +155,8 @@ export default function Wrapper() {
                 ...playerData,
                 playerData[1].active = 0,
                 playerData[0].active = 1,
-                playerData[0].turns = 3
+                playerData[0].turns = 3,
+                playerData[1].turns = 3
             ])
         }
         resetActiveDice()       
@@ -306,15 +306,23 @@ export default function Wrapper() {
     let yahtzeeArr = []
     // Check if a score has been applied already, if not, update
         if (!playerData[activePlayer].scorecard[11].set) {
-            yahtzeeArr.push(dice[0])
+            yahtzeeArr.push(dice[0].number)
+            console.log(yahtzeeArr);
             for (let i = 1; i < 5; i++) {
-                if (dice[i] == yahtzeeArr[0]) {
-                    yahtzeeArr.push(dice[i])
+                if (dice[i].number === yahtzeeArr[0]) {
+                    yahtzeeArr.push(dice[i].number)
+                    if (yahtzeeArr.length === 5) {
+                        setPlayerData([
+                            ...playerData,
+                            playerData[activePlayer].scorecard[11].score = 50
+                        ])
+                    }
                 } else {
                     yahtzeeArr = []
                 }
                 console.log(yahtzeeArr);
             }
+            
     }
 }
 
