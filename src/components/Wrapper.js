@@ -46,6 +46,7 @@ export default function Wrapper() {
           foursScore()
           fivesScore()
           sixesScore()
+          threeOfAKindScore()
           yahtzeeScore()
           chanceScore()
           totalScore()        
@@ -82,7 +83,6 @@ export default function Wrapper() {
                 dice[i].active = false
             ])
         }
-        console.log(dice);
         setActiveDice(0)
     }
 
@@ -131,7 +131,6 @@ export default function Wrapper() {
                     ...playerData,
                     playerData[activePlayer ? 1 : 0].scorecard[i].score = "0"
                 ])
-                console.log(playerData[activePlayer ? 0 : 1].scorecard[i].score);
             }
         }
         console.log(playerData);
@@ -139,24 +138,25 @@ export default function Wrapper() {
 
 //Switch between active players
     const toggleActive = () => {
+        let tempPlayerData = playerData.splice(0, 2)
         if (!activePlayer) {
             setActivePlayer(1)
             setPlayerData([
-                ...PlayerData,
-                playerData[0].active = 0,
-                playerData[1].active = 1,
-                playerData[1].turns = 3,
-                playerData[0].turns = 3
+                ...tempPlayerData,
+                tempPlayerData[0].active = 0,
+                tempPlayerData[1].active = 1,
+                tempPlayerData[1].turns = 3,
+                tempPlayerData[0].turns = 3
             ])
         }
         else {
             setActivePlayer(0)
             setPlayerData([
-                ...playerData,
-                playerData[1].active = 0,
-                playerData[0].active = 1,
-                playerData[0].turns = 3,
-                playerData[1].turns = 3
+                ...tempPlayerData,
+                tempPlayerData[1].active = 0,
+                tempPlayerData[0].active = 1,
+                tempPlayerData[0].turns = 3,
+                tempPlayerData[1].turns = 3
             ])
         }
         resetActiveDice()       
@@ -301,13 +301,35 @@ export default function Wrapper() {
         }
     }
 
+// THREE OF A KIND
+    const threeOfAKindScore = () => {
+        let threeOfAKind = []
+        let scoreCalc 
+
+        for (let i = 0; i < 5; i++) {
+            threeOfAKind.push(dice[i].number)
+            scoreCalc = threeOfAKind.reduce((a, b) => a + b)
+        }
+
+        for (let j = 1; j < 7; j++) {
+            let result = threeOfAKind.filter(num => num === j)
+
+            if (result.length >= 3) {
+                setPlayerData([
+                    ...playerData,
+                    playerData[activePlayer].scorecard[6].score = scoreCalc
+                ])
+            }
+        }
+        
+    }
+
 // YAHTZEE
     const yahtzeeScore = () => {
     let yahtzeeArr = []
     // Check if a score has been applied already, if not, update
         if (!playerData[activePlayer].scorecard[11].set) {
             yahtzeeArr.push(dice[0].number)
-            console.log(yahtzeeArr);
             for (let i = 1; i < 5; i++) {
                 if (dice[i].number === yahtzeeArr[0]) {
                     yahtzeeArr.push(dice[i].number)
@@ -320,7 +342,6 @@ export default function Wrapper() {
                 } else {
                     yahtzeeArr = []
                 }
-                console.log(yahtzeeArr);
             }
             
     }
