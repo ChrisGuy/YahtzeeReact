@@ -1,7 +1,7 @@
 import PlayerTurns from "./PlayerTurns"
 import { useState } from "react"
 
-export default function PlayerInfo({ playerNumber, playerScore, turns, active }) {
+export default function PlayerInfo({ playerScore, turns, active }) {
     const [playerName, setPlayerName] = useState("Insert Name");
     
 

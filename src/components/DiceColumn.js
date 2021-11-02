@@ -1,6 +1,6 @@
 import Dice from "./Dice";
 
-export default function DiceColumn({ dice, handleDiceClick, active, turns}) {
+export default function DiceColumn({ dice, handleDiceClick, turns, activePlayer}) {
     
 return (
         <div className="DiceColumn">

@@ -1,6 +1,20 @@
 import { FaDiceOne, FaDiceTwo, FaDiceThree, FaDiceFour, FaDiceFive, FaDiceSix, FaHome, FaStar } from "react-icons/fa";
 
-export default function ScoreCard({ scoreCard, setScoreClick}) {
+export default function ScoreCard({ scoreCard, setScoreClick, active, playerNumber, turns}) {
+    
+    const disabledCheck = (i) => {
+        if (turns > 0 && turns < 3) {
+            if (active) { 
+                if (scoreCard[i].set) {
+                    return true
+                }
+                else return false
+            }
+            else return true
+        }
+        else return true    
+    }
+    
     return (
         <div className="ScoreCard">
             <div className="Ones SCIcon">
@@ -45,11 +59,13 @@ export default function ScoreCard({ scoreCard, setScoreClick}) {
 
             <button 
                 id="0"
+                disabled={disabledCheck(0)}
                 className=
                 {`
                     OnesLabel 
                     SCLabel 
                     ${scoreCard[0].set ? "set" : ""}
+                    ${active && turns < 3 ? "activePlayer" : ""}
                 `}
                 onClick={setScoreClick}
             >
@@ -62,8 +78,10 @@ export default function ScoreCard({ scoreCard, setScoreClick}) {
                     TwosLabel 
                     SCLabel 
                     ${scoreCard[1].set ? "set" : ""}
+                    ${active && turns < 3 ? "activePlayer" : ""}
                 `}
                 onClick={setScoreClick}
+                disabled={disabledCheck(1)}
             >
                 Twos
             </button>
@@ -74,8 +92,10 @@ export default function ScoreCard({ scoreCard, setScoreClick}) {
                     ThreesLabel 
                     SCLabel 
                     ${scoreCard[2].set ? "set" : ""}
+                    ${active && turns < 3 ? "activePlayer" : ""}
                 `}
                 onClick={setScoreClick}
+                disabled={disabledCheck(2)}
             >
                 Threes
             </button>
@@ -86,8 +106,10 @@ export default function ScoreCard({ scoreCard, setScoreClick}) {
                     FoursLabel 
                     SCLabel 
                     ${scoreCard[3].set ? "set" : ""}
+                    ${active && turns < 3 ? "activePlayer" : ""}
                 `}
                 onClick={setScoreClick}
+                disabled={disabledCheck(3)}
             >
                 Fours
             </button>
@@ -98,8 +120,10 @@ export default function ScoreCard({ scoreCard, setScoreClick}) {
                     FivesLabel 
                     SCLabel 
                     ${scoreCard[4].set ? "set" : ""}
+                    ${active && turns < 3 ? "activePlayer" : ""}
                 `}
                 onClick={setScoreClick}
+                disabled={disabledCheck(4)}
             >
                 Fives
             </button>
@@ -110,8 +134,10 @@ export default function ScoreCard({ scoreCard, setScoreClick}) {
                     SixesLabel 
                     SCLabel 
                     ${scoreCard[5].set ? "set" : ""}
+                    ${active && turns < 3 ? "activePlayer" : ""}
                 `}
                 onClick={setScoreClick}
+                disabled={disabledCheck(5)}
             >
                 Sixes
             </button>
@@ -122,8 +148,10 @@ export default function ScoreCard({ scoreCard, setScoreClick}) {
                     ThreeXLabel 
                     SCLabel 
                     ${scoreCard[6].set ? "set" : ""}
+                    ${active && turns < 3 ? "activePlayer" : ""}
                 `}
                 onClick={setScoreClick}
+                disabled={disabledCheck(6)}
             >
                 3 of a Kind
             </button>
@@ -134,8 +162,10 @@ export default function ScoreCard({ scoreCard, setScoreClick}) {
                     FourXLabel 
                     SCLabel 
                     ${scoreCard[7].set ? "set" : ""}
+                    ${active && turns < 3 ? "activePlayer" : ""}
                 `}
                 onClick={setScoreClick}
+                disabled={disabledCheck(7)}
             >
                 4 of a Kind
             </button>
@@ -146,8 +176,10 @@ export default function ScoreCard({ scoreCard, setScoreClick}) {
                     FullHouseLabel 
                     SCLabel 
                     ${scoreCard[8].set ? "set" : ""}
+                    ${active && turns < 3 ? "activePlayer" : ""}
                 `}
                 onClick={setScoreClick}
+                disabled={disabledCheck(8)}
             >
                 Full House
             </button>
@@ -158,8 +190,10 @@ export default function ScoreCard({ scoreCard, setScoreClick}) {
                     SmStraightLabel 
                     SCLabel 
                     ${scoreCard[9].set ? "set" : ""}
+                    ${active && turns < 3 ? "activePlayer" : ""}
                 `}
                 onClick={setScoreClick}
+                disabled={disabledCheck(9)}
             >
                 Sm Straight
             </button>
@@ -170,8 +204,10 @@ export default function ScoreCard({ scoreCard, setScoreClick}) {
                     LgStraightLabel 
                     SCLabel 
                     ${scoreCard[10].set ? "set" : ""}
+                    ${active && turns < 3 ? "activePlayer" : ""}
                 `}
                 onClick={setScoreClick}
+                disabled={disabledCheck(10)}
             >
                 Lg Straight
             </button>
@@ -182,8 +218,10 @@ export default function ScoreCard({ scoreCard, setScoreClick}) {
                     YahtzeeLabel 
                     SCLabel 
                     ${scoreCard[11].set ? "set" : ""}
+                    ${active && turns < 3 ? "activePlayer" : ""}
                 `}
                 onClick={setScoreClick}
+                disabled={disabledCheck(11)}
             >
                 Yahtzee
             </button>
@@ -194,8 +232,10 @@ export default function ScoreCard({ scoreCard, setScoreClick}) {
                     ChanceLabel 
                     SCLabel 
                     ${scoreCard[12].set ? "set" : ""}
+                    ${active && turns < 3 ? "activePlayer" : ""}
                 `}
                 onClick={setScoreClick}
+                disabled={disabledCheck(12)}
             >
                 Chance
             </button>

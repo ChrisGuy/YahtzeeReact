@@ -8,7 +8,6 @@ export default function PlayerPanel({ playerNumber, active, totalScore, scorecar
             className={`PlayerPanel ${active ? "active" : ""}`}
             >
             <PlayerInfo
-                playerNumber = {playerNumber}
                 playerScore = {totalScore}   
                 turns =  {turns} 
                 active = {active}
@@ -27,8 +26,10 @@ export default function PlayerPanel({ playerNumber, active, totalScore, scorecar
             
 
             <ScoreCard 
+                playerNumber = {playerNumber}
                 scoreCard = {scorecard}
-                active = {active}
+                active = {active}   
+                turns =  {turns}
                 setScoreClick = {setScoreClick}
             />
         </div>

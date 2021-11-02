@@ -55,7 +55,7 @@ img.Dice.active{
   border: 3px solid #ffbaba;
 }
 
-.Dice:hover {
+.Dice:not(.Dicehover):hover {
   cursor: not-allowed;
 }
 
@@ -202,7 +202,7 @@ img.Dice.active{
   font-size: 12px;
 }
 
-.SCLabel:not(.set):hover {
+.activePlayer:not(.set):hover{
   cursor: pointer;
   font-weight: bold;
   border: solid 2px red

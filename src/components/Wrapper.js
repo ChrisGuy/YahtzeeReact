@@ -327,8 +327,8 @@ export default function Wrapper() {
             <DiceColumn 
                 handleDiceClick = {handleDiceClick}
                 dice = {dice}
-                activePlayer = {playerData}
-                turns = {playerData}
+                activePlayer = {activePlayer}
+                turns = {playerData[activePlayer].turns} 
             />
         </div>
     )

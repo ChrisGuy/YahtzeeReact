@@ -14,7 +14,12 @@ export default function Dice({active, number, handleDiceClick, id, turns}) {
         <img 
             src={dice[number-1]}
             alt={'Dice' + number}
-            className={`Dice ${active ? "active" : ""} ${turns > 0 && turns !== 3 ? "Dicehover" : ""}`}
+            className=
+            {`
+                Dice 
+                ${active ? "active" : ""} 
+                ${turns > 0 && turns !== 3 ? "Dicehover" : ""}
+            `}
             onClick={handleDiceClick}
             id = {id}
         />
