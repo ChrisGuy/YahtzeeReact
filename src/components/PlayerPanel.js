@@ -1,7 +1,7 @@
 import PlayerInfo from "./PlayerInfo"
 import ScoreCard from "./ScoreCard"
 
-export default function PlayerPanel({ playerNumber, active, totalScore, scorecard, turns, onRollClick, setScoreClick }) {
+export default function PlayerPanel({ playerNumber, active, totalScore, scorecard, turns, onRollClick, setScoreClick, heldDice }) {
 
     return (
         <div 
@@ -18,8 +18,9 @@ export default function PlayerPanel({ playerNumber, active, totalScore, scorecar
                     className = {!active ? "hidden" : ""}
                     onClick = {onRollClick}
                     id={playerNumber - 1}
+                    disabled={heldDice === 5 ? true : false}
                 >
-                    Roll Dice
+                    {heldDice === 5 ? "All Dice Held" : "Roll Dice"}
                 </button>
                 : <button disabled>No more turns</button>
             }

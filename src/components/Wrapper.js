@@ -3,13 +3,14 @@ import PlayerPanel from "./PlayerPanel"
 import PlayerData from "../PlayerData"
 import DiceData from "../DiceData"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 export default function Wrapper() {
 
     const [playerData, setPlayerData] = useState(PlayerData)
     const [dice, setDice] = useState(DiceData)
     const [activePlayer, setActivePlayer] = useState(0)
+    const [activeDice, setActiveDice] = useState(0)
 
 
 // Roll the dice and reduce turn count
@@ -45,6 +46,7 @@ export default function Wrapper() {
           foursScore()
           fivesScore()
           sixesScore()
+          yahtzeeScore()
           chanceScore()
           totalScore()       
           console.log(dice);    
@@ -52,16 +54,24 @@ export default function Wrapper() {
 
 // Hold and un-hold dice
     const handleDiceClick = (e) => {
-
+        
         if (playerData[activePlayer].turns > 0 && playerData[activePlayer].turns < 3){
             const tempActive = dice[e.target.id].active
             let tempDice = dice
+            let tempActiveDice = activeDice
             tempDice = [
                 ...tempDice,
                 dice[e.target.id].active = !tempActive
             ]
+            if (tempActive === false){
+                tempActiveDice++
+            }
+            else {
+                tempActiveDice--
+            }
             // Update dice data with temp dice hold values
             setDice(tempDice.splice(0,5))
+            setActiveDice(tempActiveDice)
         }
     }
 
@@ -74,6 +84,7 @@ export default function Wrapper() {
             ])
         }
         console.log(dice);
+        setActiveDice(0)
     }
 
 // Save the score
@@ -290,6 +301,23 @@ export default function Wrapper() {
         }
     }
 
+// YAHTZEE
+    const yahtzeeScore = () => {
+    let yahtzeeArr = []
+    // Check if a score has been applied already, if not, update
+        if (!playerData[activePlayer].scorecard[11].set) {
+            yahtzeeArr.push(dice[0])
+            for (let i = 1; i < 5; i++) {
+                if (dice[i] == yahtzeeArr[0]) {
+                    yahtzeeArr.push(dice[i])
+                } else {
+                    yahtzeeArr = []
+                }
+                console.log(yahtzeeArr);
+            }
+    }
+}
+
     const chanceScore = () => {
         // Check if a score has been applied already, if not, update
         if (!playerData[activePlayer].scorecard[12].set) {
@@ -314,6 +342,7 @@ export default function Wrapper() {
                 totalScore = {playerData[0].totalScore}
                 onRollClick = {handleRollClick}
                 setScoreClick = {setScore}
+                heldDice= {activeDice}
             />
             <PlayerPanel 
                 playerNumber = '2'
@@ -323,6 +352,7 @@ export default function Wrapper() {
                 totalScore = {playerData[1].totalScore}
                 onRollClick = {handleRollClick}
                 setScoreClick = {setScore}
+                heldDice= {activeDice}
             />
             <DiceColumn 
                 handleDiceClick = {handleDiceClick}
