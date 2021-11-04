@@ -49,7 +49,7 @@ export default function Wrapper() {
           threeOfAKindScore()
           fourOfAKindScore()
           fullHouseScore()
-          smallStraightScore()
+          straightScore()
           yahtzeeScore()
           chanceScore()
           totalScore()        
@@ -365,7 +365,37 @@ export default function Wrapper() {
                 playerData[activePlayer].scorecard[8].score = 25
             ])
         }
-    
+    }
+
+// STRAIGHT
+    const straightScore = () => {
+        let straightArr = []
+        let count = 0
+
+        for (let i = 0; i < 5; i++) {
+            straightArr.push(dice[i].number)
+        }
+
+        straightArr.sort()
+
+        for (let j = 0; j < 4; j++ ) {
+            if (straightArr[j + 1] === (straightArr[j] + 1)) {
+                count++
+                console.log(count);
+            }
+            if (count >= 3){
+                setPlayerData([
+                ...playerData,
+                playerData[activePlayer].scorecard[9].score = 30
+            ])
+            }
+            if (count >= 4) {
+                setPlayerData([
+                ...playerData,
+                playerData[activePlayer].scorecard[10].score = 40
+            ])
+            }
+        }
     }
 
 
