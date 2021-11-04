@@ -3,7 +3,7 @@ import PlayerPanel from "./PlayerPanel"
 import PlayerData from "../PlayerData"
 import DiceData from "../DiceData"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 
 export default function Wrapper() {
 
@@ -105,11 +105,12 @@ export default function Wrapper() {
 // Calculate the total score
     const totalScore = ()  => {
         let tempTotalScore = [[0],[0]]
-        let p1ScoreTotal = "0"
-        let p2ScoreTotal = "0"
+        let p1ScoreTotal = 0
+        let p2ScoreTotal = 0
         for (let j = 0; j < 2; j++) {
             for (let i = 0; i < 13; i++) {
                 if(playerData[j].scorecard[i].set){
+                    console.log(tempTotalScore);
                     tempTotalScore[j].push(playerData[j].scorecard[i].score)
                     p1ScoreTotal = tempTotalScore[0].reduce((a, b) => a + b)
                     p2ScoreTotal = tempTotalScore[1].reduce((a, b) => a + b)
@@ -130,11 +131,10 @@ export default function Wrapper() {
             if (playerData[activePlayer ? 1 : 0].scorecard[i].set === false) {
                 setPlayerData([
                     ...playerData,
-                    playerData[activePlayer ? 1 : 0].scorecard[i].score = "0"
+                    playerData[activePlayer ? 1 : 0].scorecard[i].score = 0
                 ])
             }
         }
-        console.log(playerData);
     }
 
 //Switch between active players
@@ -160,8 +160,7 @@ export default function Wrapper() {
                 tempPlayerData[1].turns = 3
             ])
         }
-        resetActiveDice()       
-        console.log(dice);
+        resetActiveDice()
     }
 
     const onesScore = () => {
