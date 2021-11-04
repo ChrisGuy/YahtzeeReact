@@ -358,12 +358,14 @@ export default function Wrapper() {
 
         var count = {};
         fullHouseArr.forEach(function(i) { count[i] = (count[i]||0) + 1;});
-
         if (Object.keys(count).length < 3) {
-            setPlayerData([
+            if ((Object.values(count)[0] === 2 && Object.values(count)[1] === 3) || (Object.values(count)[1] === 2 && Object.values(count)[0] === 3))
+            {
+                setPlayerData([
                 ...playerData,
                 playerData[activePlayer].scorecard[8].score = 25
-            ])
+                ])
+            }
         }
     }
 
@@ -381,7 +383,6 @@ export default function Wrapper() {
         for (let j = 0; j < 4; j++ ) {
             if (straightArr[j + 1] === (straightArr[j] + 1)) {
                 count++
-                console.log(count);
             }
             if (count >= 3){
                 setPlayerData([
